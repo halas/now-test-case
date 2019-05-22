@@ -19,15 +19,10 @@ module.exports = () => {
   };
   console.log('hello'); //we get here
 
-  try {
-  console.log('try'); //we get here
-    const data = ddb.putItem(params).promise();
-    console.log(data); //this is pending promise now
-    data
-      .then((data) => {console.log(data)})
-      .catch((error) => {console.log(error)});
-    // and it never gets resolved or rejected
-  } catch(e) {
-    console.log(e); //and now error catched here either
-  }
+  const data = ddb.putItem(params).promise();
+  console.log(data); //this is pending promise now
+  data
+    .then((data) => {console.log(data)})
+    .catch((error) => {console.log(error)});
+  // and it never gets resolved or rejected
 };
