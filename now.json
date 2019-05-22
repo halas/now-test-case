@@ -1,7 +1,11 @@
 {
-    "version": 2,
-    "name": "nodejs",
-    "builds": [
-        { "src": "*.js", "use": "@now/node" }
-    ]
+  "version": 2,
+  "name": "nodejs",
+  "builds": [
+    { "src": "*.js", "use": "@now/node" }
+  ],
+  "env": {
+    "DYNAMO_KEY_ID": "@dynamo_key_id",
+    "DYNAMO_KEY_SECRET": "@dynamo_key_secret"
+  }
 }
