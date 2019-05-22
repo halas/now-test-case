@@ -9,7 +9,7 @@ AWS.config.update({
 });
 
 const ddb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
-module.exports = () => {
+module.exports = async () => {
   let params = {
     TableName: 'now-test-case',
     Item: {
@@ -19,10 +19,12 @@ module.exports = () => {
   };
   console.log('hello'); //we get here
 
-  const data = ddb.putItem(params).promise();
-  console.log(data); //this is pending promise now
-  data
-    .then((data) => {console.log(data)})
-    .catch((error) => {console.log(error)});
-  // and it never gets resolved or rejected
+  try {
+    const data = await ddb.putItem(params).promise();
+    console.log(data); // this does not get logged, guess we are pending
+    return data;
+  } catch (e) {
+    console.log(e);
+    return e;
+  }
 };
