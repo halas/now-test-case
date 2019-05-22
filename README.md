@@ -2,6 +2,8 @@
 
 This is a simplified test case for application where I would like to have a node deployment on now where we respond with 200 to a request and *after* sending the response log something to Amazon Dynamo DB table. 
 
+Related [stack overflow question](https://stackoverflow.com/questions/56254384/updating-amazon-ddb-table-from-node-on-now-after-response-to-request-sent)
+
 ## Problem
 
 If I run: 
