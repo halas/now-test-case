@@ -1,43 +1,31 @@
-# Node.js
+# Test case to understand Now - Amazon ddb connection
 
-In this example we will be deploying a simple "Hello World" example with Node.js.
+This is a simplified test case for application where I would like to have a node deployment on now where we respond with 200 to a request and *after* sending the response log something to Amazon Dynamo DB table. 
 
-### Getting started with Node.js
+## Problem
 
-- Create a `index.js` file with the following code:
-
-```js
-module.exports = (req, res) => {
-  res.end(`Hello from Node.js on Now 2.0!`);
-};
-```
-
-### Deploy with Now
-
-First we need to create a `now.json` configuration file to instruct Now how to build the project.
-
-For this example we will be using our newest version [Now 2.0](https://zeit.co/now).
-
-By adding the `version` key to the `now.json` file, we can specify which Now Platform version to use.
-
-We also need to define each builders we would like to use. [Builders](https://zeit.co/docs/v2/deployments/builders/overview/) are modules that take a deployment's source and return an output, consisting of [either static files or dynamic Lambdas](https://zeit.co/docs/v2/deployments/builds/#sources-and-outputs).
-
-In this case we are going to use `@now/node` to build and deploy the all JavaScript files. We will also define a name for our project (optional).
-
-```json
-{
-    "version": 2,
-    "name": "nodejs",
-    "builds": [
-        { "src": "*.js", "use": "@now/node" }
-    ]
-}
-```
-
-Visit our [documentation](https://zeit.co/docs/v2/deployments/configuration) for more information on the `now.json` configuration file.
-
-We are now ready to deploy the app.
+If I run: 
 
 ```
-now
+node send-manually.js
 ```
+
+module `send.js` works correctly and adds info to the table. 
+
+But if I run it on server and hit the page with get request, the `ddb.putItem` request gets hanged as pending promise and no error is served. 
+
+## Try this at home:
+
+Clone repository.
+Populate .env with your own Dynamo DB credentials.
+
+Run:
+
+```
+now dev
+
+```
+
+And watch what gets logged.
+
+
