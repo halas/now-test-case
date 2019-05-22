@@ -28,6 +28,6 @@ module.exports = () => {
       .catch((error) => {console.log(error)});
     // and it never gets resolved or rejected
   } catch(e) {
-    console.log(e); //and now error catched here either
+    console.log(e); //and no error catched here either
   }
 };
