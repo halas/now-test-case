@@ -13,7 +13,7 @@ module.exports = () => {
   let params = {
     TableName: 'now-test-case',
     Item: {
-      'id': { N: Date.now() },
+      'id': { N: String(Date.now()) },
       'message': { S: 'hello World' },
     }
   };
